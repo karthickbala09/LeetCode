@@ -1,14 +1,13 @@
 class Solution {
     public int largestAltitude(int[] gain) {
-        int prefixsum[] = new int[gain.length+1];
-        prefixsum[0] = gain[0];
-        int res = prefixsum[0];
-        for(int i=1;i<gain.length;i++){
-            prefixsum[i] = prefixsum[i-1]+gain[i];
-            res = Math.max(res,prefixsum[i]);
+        int max = 0;
+        int sum=0;
+        for(int i=0;i<gain.length;i++){
+          sum+=gain[i];
+          if(sum>max){
+            max = sum;
+          }
         }
-        System.out.println(Arrays.toString(prefixsum));
-        return Math.max(res,prefixsum[gain.length]);
-
+        return max;
     }
 }
